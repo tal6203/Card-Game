@@ -5,21 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>&#9733; Card Game &#9733;</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"/>
   </head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-  />
-  <link rel="stylesheet" href="style.css"/>
   <body>
     <div class="container">
       <div class="row">
         <div class="col s12 m6">
-          <img id="my_card" src="img/opp.jpg" />
+          <img id="my_card" src="img/opp.jpg" alt="Player's card" />
           <p>Your score: <span id="my_score">&nbsp;0</span></p>
         </div>
         <div class="col s12 m6">
-          <img id="computer_card" src="img/opp.jpg" />
+          <img id="computer_card" src="img/opp.jpg" alt="Computer's card" />
           <p>Computer score: <span id="computer_score">&nbsp;0</span></p>
         </div>
       </div>
@@ -32,7 +33,6 @@
               class="waves-effect waves-light btn"
               type="button"
               onclick="flip()"
-              style="border-radius:20px;"
             >
               Let's Play
             </button>
@@ -71,20 +71,20 @@
             document.getElementById("alert").innerHTML = "Draw";
             document.getElementById("alert").style.color = "#adb5bd";
           }
-          setTimeout(back_to_defult, 2000);
+          setTimeout(back_to_default, 2000);
         }
       }
-      function back_to_defult() {
+      function back_to_default() {
         let btn1 = document.getElementById("btn1");
         let btn2 = document.createElement("button");
         btn2.setAttribute("class", "waves-effect waves-light btn");
-        btn2.style.borderRadius="20px"
+        btn2.style.borderRadius="20px";
         if (my_score == 5) {
           document.getElementById("result").innerHTML = "You are the winner!";
           document.getElementById("result").style.color = "#ffc107";
           btn2.innerHTML = "Let's Play again";
           btn2.setAttribute("id", "btn2");
-          btn2.addEventListener("click", restGame);
+          btn2.addEventListener("click", resetGame);
           document.querySelector(".container-btn").appendChild(btn2);
           btn1.remove();
         } else if (computer_score == 5) {
@@ -93,7 +93,7 @@
           document.getElementById("result").style.color = "#b388ff";
           btn2.innerHTML = "Let's Play again";
           btn2.setAttribute("id", "btn2");
-          btn2.addEventListener("click", restGame);
+          btn2.addEventListener("click", resetGame);
           document.querySelector(".container-btn").appendChild(btn2);
           btn1.remove();
         } else {
@@ -105,13 +105,13 @@
           document.getElementById("alert").innerHTML = "";
         }
       }
-      function restGame() {
+      function resetGame() {
         my_score = 0;
         computer_score = 0;
         let btn1 = document.createElement("button");
         btn1.setAttribute("id", "btn1");
         btn1.setAttribute("class", "waves-effect waves-light btn");
-        btn1.style.borderRadius="20px"
+        btn1.style.borderRadius="20px";
         btn1.innerHTML = "Let's Play";
         document.getElementById("my_score").innerHTML = ` ${my_score}`;
         document.getElementById(
